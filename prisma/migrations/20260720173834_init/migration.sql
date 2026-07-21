@@ -1,0 +1,30 @@
+-- CreateEnum
+CREATE TYPE "ServiceType" AS ENUM ('OUTSOURCING', 'SI', 'PRODUCT', 'CONSULTING', 'SPECIALIZED_TECH');
+
+-- CreateEnum
+CREATE TYPE "SourceType" AS ENUM ('PUBLIC_WEBSITE', 'DIRECTORY', 'LINKEDIN', 'ARTICLE', 'DEMO_DATA');
+
+-- CreateEnum
+CREATE TYPE "SummaryType" AS ENUM ('PROFILE_SUMMARY', 'LLM_SUMMARY', 'MANUAL_NOTE');
+
+-- CreateEnum
+CREATE TYPE "Role" AS ENUM ('ADMIN', 'DEVELOPER', 'REVIEWER');
+
+-- CreateEnum
+CREATE TYPE "Classification" AS ENUM ('OUTSOURCING_VENDOR', 'SI_COMPANY', 'PRODUCT_COMPANY', 'CONSULTING_IT_SERVICE', 'SPECIALIZED_TECH_VENDOR');
+
+-- CreateTable
+CREATE TABLE "members" (
+    "id" TEXT NOT NULL,
+    "email" TEXT NOT NULL,
+    "password" TEXT NOT NULL,
+    "name" TEXT NOT NULL,
+    "role" "Role" NOT NULL DEFAULT 'DEVELOPER',
+    "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "updatedAt" TIMESTAMP(3) NOT NULL,
+
+    CONSTRAINT "members_pkey" PRIMARY KEY ("id")
+);
+
+-- CreateIndex
+CREATE UNIQUE INDEX "members_email_key" ON "members"("email");

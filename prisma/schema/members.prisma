@@ -1,0 +1,12 @@
+model Member {
+  id           String @id @default(uuid())
+  email        String @unique
+  passwordHash String @map("password")
+  name         String
+  role         Role   @default(DEVELOPER)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("members")
+}
